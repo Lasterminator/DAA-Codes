@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define V 20
+#define V 500
 int no_of_vertices,no_of_edges;
 #define INPUT  "Graph1.txt"	 //Input
 #define OUTPUT "Output.txt"  //Output
