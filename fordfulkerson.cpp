@@ -8,6 +8,7 @@
 using namespace std;
 
 #define V 20
+int no_of_vertices,no_of_edges;
 #define INPUT  "Graph1.txt"	 //Input
 #define OUTPUT "Output.txt"  //Output
 
@@ -28,6 +29,7 @@ int main(){
         
         int source, sink, vertex1, vertex2, weight;
         if (cin.is_open()){
+            cin >> no_of_vertices >> no_of_edges;
             cin >> source >> sink;
             //first line has source and sink of graph
             while(!cin.eof()){
