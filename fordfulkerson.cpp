@@ -19,8 +19,8 @@ void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Pri
 int main(){
     int method;
     cout << "enter 1 for maxflow and 2 for max bipartite problem" << endl;
-    cin >> method;
-    if(method = 1){
+    // cin >> method;
+    // if(method = 1){
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -38,8 +38,8 @@ int main(){
         }
 
         max_flow(graph, source, sink);
-    }
-    else{
+    // }
+    // else{
         // freopen(OUTPUT, "w", stdout);
         // ifstream cin(INPUT, ifstream::in);
         
@@ -57,7 +57,7 @@ int main(){
         // }
 
         // max_flow(graph, source, sink);
-    }
+    // }
     return 0;
 }
 
