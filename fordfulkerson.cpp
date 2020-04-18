@@ -7,9 +7,10 @@
 
 using namespace std;
 
-#define V 500
-int no_of_vertices,no_of_edges;
-#define INPUT  "Graph1.txt"	 //Input
+#define V 100
+int no_of_vertices,no_of_edges; //test variables for q1
+int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
+#define INPUT  "b1.txt"	 //Input
 #define OUTPUT "Output.txt"  //Output
 
 void max_flow(int graph[V][V], int source, int sink);   //Gives Maxflow of a given graph
@@ -19,9 +20,9 @@ void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Pri
 			    
 int main(){
     int method;
-    cout << "enter 1 for maxflow and 2 for max bipartite problem" << endl;
-    // cin >> method;
-    // if(method = 1){
+    cout << "enter 1 for fordfulkerson and 2 for max bipartite problem" << endl;
+    cin >> method;
+    if(method = 1){
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -40,26 +41,29 @@ int main(){
         }
 
         max_flow(graph, source, sink);
-    // }
-    // else{
-        // freopen(OUTPUT, "w", stdout);
-        // ifstream cin(INPUT, ifstream::in);
+    }
+    else{
+        freopen(OUTPUT, "w", stdout);
+        ifstream cin(INPUT, ifstream::in);
         
-        // int graph[V][V] = {0};
+        int graph[V][V] = {0};
         
-        // int source, sink, vertex1, vertex2, weight;
-        // if (cin.is_open()){
-        //     cin >> source >> sink;
-        //     //first line has source and sink of graph
-        //     while(!cin.eof()){
-        //         cin >> vertex1; cin >> vertex2; cin >> weight;
-        //         graph[vertex1][vertex2] = weight;
-        //     }
-        //     // inserting weights to in graph matrix
-        // }
-
-        // max_flow(graph, source, sink);
-    // }
+        int source, sink, vertex1, vertex2, weight;
+        if (cin.is_open()){
+            cin >> no_of_vertices_1 >> no_of_vertices_2 >> temp;
+            source = 0;
+            sink = no_of_vertices_1 + no_of_vertices_2 + 1 ;
+            while(!cin.eof()){
+                cin >> vertex1; cin >> vertex2;
+                graph[vertex1][no_of_vertices_1 + vertex2] = 1;
+                graph[source][vertex1] = 1;
+                graph[no_of_vertices_1 + vertex2][sink] = 1;
+            }
+            // inserting bool values to in graph matrix
+        }
+        
+        max_flow(graph, source, sink);
+    }
     return 0;
 }
 
@@ -142,7 +146,7 @@ void mincut_finder(int residual[V][V], int source, bool visited[]){
 //Print function for mincut capacity and severing edges 
 void print_mincut(int graph[V][V], bool visited[], int source, int sink){
     int mincut_size = 0, mincut_cap = 0;
-    cout << "Min st-cut:" <<endl;
+    cout << "Min st-cut (Ignore if you want bipartite answer):" <<endl;
     for (int i = 0; i < V; i++){
         for (int j = 0; j < V; j++){
             if (visited[i] && !visited[j] && graph[i][j]){    
@@ -154,5 +158,5 @@ void print_mincut(int graph[V][V], bool visited[], int source, int sink){
     }    
     cout << endl;
     
-    cout << "Min-cut capacity : " << mincut_cap << endl << endl;
+    cout << "Min-cut capacity (Ignore if you want bipartite answer): " << mincut_cap << endl << endl;
 }
