@@ -39,24 +39,24 @@ int main(){
 
         max_flow(graph, source, sink);
     }
-    else(method = 2){
-        freopen(OUTPUT, "w", stdout);
-        ifstream cin(INPUT, ifstream::in);
+    else{
+        // freopen(OUTPUT, "w", stdout);
+        // ifstream cin(INPUT, ifstream::in);
         
-        int graph[V][V] = {0};
+        // int graph[V][V] = {0};
         
-        int source, sink, vertex1, vertex2, weight;
-        if (cin.is_open()){
-            cin >> source >> sink;
-            //first line has source and sink of graph
-            while(!cin.eof()){
-                cin >> vertex1; cin >> vertex2; cin >> weight;
-                graph[vertex1][vertex2] = weight;
-            }
-            // inserting weights to in graph matrix
-        }
+        // int source, sink, vertex1, vertex2, weight;
+        // if (cin.is_open()){
+        //     cin >> source >> sink;
+        //     //first line has source and sink of graph
+        //     while(!cin.eof()){
+        //         cin >> vertex1; cin >> vertex2; cin >> weight;
+        //         graph[vertex1][vertex2] = weight;
+        //     }
+        //     // inserting weights to in graph matrix
+        // }
 
-        max_flow(graph, source, sink);
+        // max_flow(graph, source, sink);
     }
     return 0;
 }
