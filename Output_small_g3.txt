@@ -1,0 +1,9 @@
+Min st-cut:
+4 - 13
+4 - 16
+4 - 21
+4 - 25
+
+Min-cut capacity: 9495
+
+Max-flow value : 9495
