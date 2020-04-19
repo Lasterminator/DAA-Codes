@@ -105,7 +105,7 @@ void max_flow(int graph[V][V], int source, int sink, bool bipartite){
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
     mincut_finder(residual, source, tempvisited);
-    print_mincut(graph, tempvisited, source, sink);
+    if(bipartite == false){print_mincut(graph, tempvisited, source, sink);}
     cout << "Max-flow value : " << max_flow << endl;
 
 }
