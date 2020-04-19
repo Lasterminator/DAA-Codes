@@ -10,8 +10,8 @@ using namespace std;
 #define V 200
 int no_of_vertices,no_of_edges; //test variables for q1
 int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "small_g1.txt"	 //Input
-#define OUTPUT "Output_small_g1.txt"  //Output
+#define INPUT  "small_b1.txt"	 //Input
+#define OUTPUT "Output_small_b1.txt"  //Output
 
 // function prototypes
 void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
@@ -105,8 +105,11 @@ void max_flow(int graph[V][V], int source, int sink, bool bipartite){
     // finding vertices reachable from source after flow is maximised
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
-    mincut_finder(residual, source, tempvisited);
-    if(bipartite == false){print_mincut(graph, tempvisited, source, sink);}
+    
+    if(bipartite == false){
+        mincut_finder(residual, source, tempvisited);
+        print_mincut(graph, tempvisited, source, sink);
+    }
     cout << "Max-flow value : " << max_flow << endl;
 
 }
