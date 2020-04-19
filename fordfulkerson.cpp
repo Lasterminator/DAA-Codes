@@ -150,7 +150,7 @@ void mincut_finder(int residual[V][V], int source, bool visited[]){
 //Print function for mincut capacity and severing edges 
 void print_mincut(int graph[V][V], bool visited[], int source, int sink){
     int mincut_size = 0, mincut_cap = 0;
-    cout << "Min st-cut (Ignore if you want bipartite answer):" <<endl;
+    cout << "Min st-cut:" <<endl;
     for (int i = 0; i < V; i++){
         for (int j = 0; j < V; j++){
             if (visited[i] && !visited[j] && graph[i][j]){    
@@ -162,5 +162,5 @@ void print_mincut(int graph[V][V], bool visited[], int source, int sink){
     }    
     cout << endl;
     
-    cout << "Min-cut capacity (Ignore if you want bipartite answer): " << mincut_cap << endl << endl;
+    cout << "Min-cut capacity: " << mincut_cap << endl << endl;
 }
