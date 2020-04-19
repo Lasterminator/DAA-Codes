@@ -10,7 +10,7 @@ using namespace std;
 #define V 100
 int no_of_vertices,no_of_edges; //test variables for q1
 int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "b1.txt"	 //Input
+#define INPUT  "Graph1.txt"	 //Input
 #define OUTPUT "Output.txt"  //Output
 
 void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
@@ -22,7 +22,7 @@ int main(){
     int method; bool bipartite;
     cout << "enter 1 for fordfulkerson and 2 for max bipartite problem" << endl;
     cin >> method;
-    if(method = 1){
+    if(method == 1){
         bipartite = false;
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
@@ -43,7 +43,7 @@ int main(){
 
         max_flow(graph, source, sink, bipartite);
     }
-    else{
+    else if (method == 2){
         bipartite = true;
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
@@ -66,6 +66,7 @@ int main(){
         
         max_flow(graph, source, sink, bipartite);
     }
+    else{}
     return 0;
 }
 
@@ -104,8 +105,7 @@ void max_flow(int graph[V][V], int source, int sink, bool bipartite){
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
     mincut_finder(residual, source, tempvisited);
-    if(bipartite = false)
-        print_mincut(graph, tempvisited, source, sink);
+    print_mincut(graph, tempvisited, source, sink);
     cout << "Max-flow value : " << max_flow << endl;
 
 }
