@@ -13,16 +13,17 @@ int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
 #define INPUT  "b1.txt"	 //Input
 #define OUTPUT "Output.txt"  //Output
 
-void max_flow(int graph[V][V], int source, int sink);   //Gives Maxflow of a given graph
+void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
 bool aug_path(int residual[V][V], int source, int sink, int parent[]);  //Returns if a graph has any augment paths left
 void mincut_finder(int residual[V][V], int source, bool visited[]);    //Finding the mincut
 void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Printing mincut edges
 			    
 int main(){
-    int method;
+    int method; bool bipartite;
     cout << "enter 1 for fordfulkerson and 2 for max bipartite problem" << endl;
     cin >> method;
     if(method = 1){
+        bipartite = false;
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -40,9 +41,10 @@ int main(){
             // inserting weights to in graph matrix
         }
 
-        max_flow(graph, source, sink);
+        max_flow(graph, source, sink, bipartite);
     }
     else{
+        bipartite = true;
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -62,12 +64,12 @@ int main(){
             // inserting bool values to in graph matrix
         }
         
-        max_flow(graph, source, sink);
+        max_flow(graph, source, sink, bipartite);
     }
     return 0;
 }
 
-void max_flow(int graph[V][V], int source, int sink){
+void max_flow(int graph[V][V], int source, int sink, bool bipartite){
     int u, v, it = 0;    
     int residual[V][V];  
     for (u = 0; u < V; u++){
@@ -102,7 +104,8 @@ void max_flow(int graph[V][V], int source, int sink){
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
     mincut_finder(residual, source, tempvisited);
-    print_mincut(graph, tempvisited, source, sink);
+    if(bipartite = false)
+        print_mincut(graph, tempvisited, source, sink);
     cout << "Max-flow value : " << max_flow << endl;
 
 }
