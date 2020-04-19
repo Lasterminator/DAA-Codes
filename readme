@@ -8,3 +8,7 @@ format for test cases for maxxflow case of bipartite graph ford fulkerson is :
     vertex in M-set , vertex in N-set
 
 Caution: Dont use "0" as vertex in either cases and use all intergers consecutively i.e use all integers b/w (m,n) given m,n are integers
+
+Depending on the no.of vertices change 'V' variable in code accordingly (for bipartite V > no.of vertices in M-set + no.of vertices in N-set + 1)
+
+The input and output files should be changed in the code.
