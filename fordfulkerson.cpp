@@ -7,12 +7,13 @@
 
 using namespace std;
 
-#define V 100
+#define V 200
 int no_of_vertices,no_of_edges; //test variables for q1
 int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "Graph1.txt"	 //Input
-#define OUTPUT "Output.txt"  //Output
+#define INPUT  "b3.txt"	 //Input
+#define OUTPUT "Output_b3.txt"  //Output
 
+// function prototypes
 void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
 bool aug_path(int residual[V][V], int source, int sink, int parent[]);  //Returns if a graph has any augment paths left
 void mincut_finder(int residual[V][V], int source, bool visited[]);    //Finding the mincut
