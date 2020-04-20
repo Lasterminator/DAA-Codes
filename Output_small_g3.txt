@@ -8,4 +8,4 @@ Min-cut capacity: 9495
 
 Max-flow value : 9495
 
-Time taken by program is : 0.013119 sec
+Time taken by program is : 0.001042 sec
