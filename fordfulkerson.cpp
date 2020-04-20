@@ -1,3 +1,5 @@
+#include <bits/stdc++.h> 
+#include <sys/time.h>
 #include <iostream>
 #include <limits.h>
 #include <fstream>
@@ -10,8 +12,8 @@ using namespace std;
 #define V 200
 int no_of_vertices,no_of_edges; //test variables for q1
 int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "small_g3.txt"	 //Input
-#define OUTPUT "Output_small_g3.txt"  //Output
+#define INPUT  "small_b3.txt"	 //Input
+#define OUTPUT "Output_small_b3.txt"  //Output
 
 // function prototypes
 void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
@@ -22,7 +24,9 @@ void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Pri
 int main(){
     int method; bool bipartite;
     cout << "enter 1 for fordfulkerson and 2 for max bipartite problem" << endl;
-    cin >> method;
+    cin >> method;   
+    struct timeval start, end; 
+    gettimeofday(&start, NULL); 
     if(method == 1){
         bipartite = false;
         freopen(OUTPUT, "w", stdout);
@@ -43,6 +47,7 @@ int main(){
         }
 
         max_flow(graph, source, sink, bipartite);
+        gettimeofday(&end, NULL); 
     }
     else if (method == 2){
         bipartite = true;
@@ -66,8 +71,16 @@ int main(){
         }
         
         max_flow(graph, source, sink, bipartite);
+        gettimeofday(&end, NULL); 
     }
     else{}
+    double time_taken; 
+    time_taken = (end.tv_sec - start.tv_sec) * 1e6; 
+    time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6; 
+  
+    cout << "Time taken by program is : " << fixed 
+         << time_taken << setprecision(6); 
+    cout << " sec" << endl; 
     return 0;
 }
 
@@ -110,7 +123,7 @@ void max_flow(int graph[V][V], int source, int sink, bool bipartite){
         mincut_finder(residual, source, tempvisited);
         print_mincut(graph, tempvisited, source, sink);
     }
-    cout << "Max-flow value : " << max_flow << endl;
+    cout << "Max-flow value : " << max_flow << endl << endl;
 
 }
 
