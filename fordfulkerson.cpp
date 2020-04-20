@@ -10,16 +10,16 @@
 using namespace std;
 
 #define V 200
-int no_of_vertices,no_of_edges; //test variables for q1
-int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "small_g3.txt"	 //Input
-#define OUTPUT "Output_small_g3.txt"  //Output
+int no_of_vertices,no_of_edges; ///test variables for q1
+int no_of_vertices_1,no_of_vertices_2,temp; ///test variables for q3
+#define INPUT  "small_g3.txt"	 ///Input
+#define OUTPUT "Output_small_g3.txt"  ///Output
 
-// function prototypes
-void max_flow(int graph[V][V], int source, int sink,int method);   //Gives Maxflow of a given graph
-bool aug_path(int residual[V][V], int source, int sink, int parent[]);  //Returns if a graph has any augment paths left
-void mincut_finder(int residual[V][V], int source, bool visited[]);    //Finding the mincut
-void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Printing mincut edges
+/// function prototypes
+void max_flow(int graph[V][V], int source, int sink,int method);   ///Gives Maxflow of a given graph
+bool aug_path(int residual[V][V], int source, int sink, int parent[]);  ///Returns if a graph has any augment paths left
+void mincut_finder(int residual[V][V], int source, bool visited[]);    ///Finding the mincut
+void print_mincut(int graph[V][V], bool visited[], int source, int sink);  ///Printing mincut edges
 			    
 int main(){
     int method;
@@ -38,12 +38,12 @@ int main(){
         if (cin.is_open()){
             cin >> no_of_vertices >> no_of_edges;
             cin >> source >> sink;
-            //first line has source and sink of graph
+            ///first line has source and sink of graph
             while(!cin.eof()){
                 cin >> vertex1; cin >> vertex2; cin >> weight;
                 graph[vertex1][vertex2] = weight;
             }
-            // inserting weights to in graph matrix
+            /// inserting weights to in graph matrix
         }
 
         max_flow(graph, source, sink, method);
@@ -67,7 +67,7 @@ int main(){
                 graph[source][vertex1] = 1;
                 graph[no_of_vertices_1 + vertex2][sink] = 1;
             }
-            // inserting bool values to in graph matrix
+            /// inserting bool values to in graph matrix
         }
         
         max_flow(graph, source, sink, method);
@@ -84,6 +84,7 @@ int main(){
     return 0;
 }
 
+///Gives Maxflow of a given graph
 void max_flow(int graph[V][V], int source, int sink, int method){
     int u, v, it = 0;    
     int residual[V][V];  
@@ -92,30 +93,30 @@ void max_flow(int graph[V][V], int source, int sink, int method){
             residual[u][v] = graph[u][v];
         }
     }    
-    // creation of a residual graph
+    /// creation of a residual graph
     int path[V]; 
-    // this path array brings the augment path(if there exists one) from the function aug_path
+    /// this path array brings the augment path(if there exists one) from the function aug_path
     int max_flow = 0;  
-    //initialzing with no flow
+    ///initialzing with no flow
     while (aug_path(residual, source, sink, path)){
         
         int path_flow = INT_MAX;
         for (v = sink; v != source; v = path[v]){
             u = path[v];
-            path_flow = min(path_flow, residual[u][v]);  //Bottlenecking
+            path_flow = min(path_flow, residual[u][v]);  ///Bottlenecking
         }
-        //Updating residual capacities
+        ///Updating residual capacities
         for (v = sink; v != source; v = path[v]){
 	        u = path[v];
             residual[u][v] -= path_flow;
             residual[v][u] += path_flow;
         }
-
+        /// max_flow is added by bottleneck
         max_flow += path_flow;
-        // max_flow is added by bottleneck
+        
     }
     
-    // finding vertices reachable from source after flow is maximised
+    /// finding vertices reachable from source after flow is maximised
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
     
@@ -127,16 +128,16 @@ void max_flow(int graph[V][V], int source, int sink, int method){
 
 }
 
-//Stores augment path in path[] if path exists
+///Stores augment path in path[] if path exists
 bool aug_path(int residual[V][V], int source, int sink, int path[]){
     bool visited[V];       
     memset(visited, 0, sizeof(visited));
  
     queue <int> Q;         
-    Q.push(source);     //Queue for maintaining nodes to be pushed       
+    Q.push(source);     ///Queue for maintaining nodes to be pushed       
     visited[source] = true;     
     path[source] = -1;
-    //BFS
+    ///BFS
     while (Q.empty()==false){
         int some_vertex = Q.front();
         Q.pop();
@@ -149,7 +150,7 @@ bool aug_path(int residual[V][V], int source, int sink, int path[]){
             }
         }
     }
-    //If sink is visited then path exists
+    ///If sink is visited then path exists
     return (visited[sink] == true);
 }
 
