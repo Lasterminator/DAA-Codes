@@ -12,23 +12,23 @@ using namespace std;
 #define V 200
 int no_of_vertices,no_of_edges; //test variables for q1
 int no_of_vertices_1,no_of_vertices_2,temp; //test variables for q3
-#define INPUT  "small_b3.txt"	 //Input
-#define OUTPUT "Output_small_b3.txt"  //Output
+#define INPUT  "small_g3.txt"	 //Input
+#define OUTPUT "Output_small_g3.txt"  //Output
 
 // function prototypes
-void max_flow(int graph[V][V], int source, int sink, bool bipartite);   //Gives Maxflow of a given graph
+void max_flow(int graph[V][V], int source, int sink,int method);   //Gives Maxflow of a given graph
 bool aug_path(int residual[V][V], int source, int sink, int parent[]);  //Returns if a graph has any augment paths left
 void mincut_finder(int residual[V][V], int source, bool visited[]);    //Finding the mincut
 void print_mincut(int graph[V][V], bool visited[], int source, int sink);  //Printing mincut edges
 			    
 int main(){
-    int method; bool bipartite;
-    cout << "enter 1 for fordfulkerson and 2 for max bipartite problem" << endl;
+    int method;
+    cout << "enter 1 for fordfulkerson with min-cut, 2 for without min-cut and 3 for max bipartite problem" << endl;
     cin >> method;   
     struct timeval start, end; 
     gettimeofday(&start, NULL); 
-    if(method == 1){
-        bipartite = false;
+    if(method == 1 || method == 2){
+
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -46,11 +46,11 @@ int main(){
             // inserting weights to in graph matrix
         }
 
-        max_flow(graph, source, sink, bipartite);
+        max_flow(graph, source, sink, method);
         gettimeofday(&end, NULL); 
     }
-    else if (method == 2){
-        bipartite = true;
+    else if (method == 3){
+        
         freopen(OUTPUT, "w", stdout);
         ifstream cin(INPUT, ifstream::in);
         
@@ -70,7 +70,7 @@ int main(){
             // inserting bool values to in graph matrix
         }
         
-        max_flow(graph, source, sink, bipartite);
+        max_flow(graph, source, sink, method);
         gettimeofday(&end, NULL); 
     }
     else{}
@@ -84,7 +84,7 @@ int main(){
     return 0;
 }
 
-void max_flow(int graph[V][V], int source, int sink, bool bipartite){
+void max_flow(int graph[V][V], int source, int sink, int method){
     int u, v, it = 0;    
     int residual[V][V];  
     for (u = 0; u < V; u++){
@@ -119,7 +119,7 @@ void max_flow(int graph[V][V], int source, int sink, bool bipartite){
     bool tempvisited[V];
     memset(tempvisited, false, sizeof(tempvisited));
     
-    if(bipartite == false){
+    if(method == 1){
         mincut_finder(residual, source, tempvisited);
         print_mincut(graph, tempvisited, source, sink);
     }
@@ -153,7 +153,7 @@ bool aug_path(int residual[V][V], int source, int sink, int path[]){
     return (visited[sink] == true);
 }
 
-//DFS to find all vertex reachable from Source vertex.
+/// DFS to find all vertex reachable from Source vertex.
 void mincut_finder(int residual[V][V], int source, bool visited[]){
     visited[source] = true;
     for (int i = 0; i < V; i++){
@@ -163,7 +163,7 @@ void mincut_finder(int residual[V][V], int source, bool visited[]){
     }
 }
 
-//Print function for mincut capacity and severing edges 
+/// Print function for mincut capacity and severing edges 
 void print_mincut(int graph[V][V], bool visited[], int source, int sink){
     int mincut_size = 0, mincut_cap = 0;
     cout << "Min st-cut:" <<endl;
