@@ -5,3 +5,5 @@ Min st-cut:
 Min-cut capacity: 19
 
 Max-flow value : 19
+
+Time taken by program is : 0.005343 sec
