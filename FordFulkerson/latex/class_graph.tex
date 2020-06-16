@@ -1,0 +1,59 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a74af1f5cdc72a2bd610c8fefd7f6bdf9}\label{class_graph_a74af1f5cdc72a2bd610c8fefd7f6bdf9}} 
+{\bfseries Graph} (long long V, long long E)
+\item 
+\mbox{\Hypertarget{class_graph_a81d526895e71b36fdd08a65c7e519f67}\label{class_graph_a81d526895e71b36fdd08a65c7e519f67}} 
+void {\bfseries add\+\_\+edge} (long long u, long long v, long long wt, long long \&index)
+\item 
+\mbox{\Hypertarget{class_graph_a263e85274bcf05141277523f0478c987}\label{class_graph_a263e85274bcf05141277523f0478c987}} 
+void {\bfseries print\+\_\+graph} (vector$<$ E\+D\+GE $>$ $\ast$graph)
+\item 
+\mbox{\Hypertarget{class_graph_aa16d6dbe2b68118045ccd933d6b69538}\label{class_graph_aa16d6dbe2b68118045ccd933d6b69538}} 
+pair$<$ long long, long long $>$ {\bfseries find\+\_\+source\+\_\+sink} ()
+\item 
+\mbox{\Hypertarget{class_graph_a0d3a0fb8c00617b70a657203f6e1000b}\label{class_graph_a0d3a0fb8c00617b70a657203f6e1000b}} 
+bool {\bfseries bfs} (long long source, long long sink, vector$<$ long long $>$ \&parent)
+\item 
+\mbox{\Hypertarget{class_graph_aa8b5908aa5036edc6c0d192703b11585}\label{class_graph_aa8b5908aa5036edc6c0d192703b11585}} 
+void {\bfseries Ford\+\_\+\+Fulkerson} ()
+\item 
+\mbox{\Hypertarget{class_graph_a4e1b89a70a6ba126b7f5b0427ad964a6}\label{class_graph_a4e1b89a70a6ba126b7f5b0427ad964a6}} 
+void {\bfseries print\+\_\+mincut} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a7037508d5040bc6781e8e408b1dc2f1d}\label{class_graph_a7037508d5040bc6781e8e408b1dc2f1d}} 
+long long {\bfseries V}
+\item 
+\mbox{\Hypertarget{class_graph_a0c80ddf40a1a9c4cb2ee408c98a19ef8}\label{class_graph_a0c80ddf40a1a9c4cb2ee408c98a19ef8}} 
+long long {\bfseries E}
+\item 
+\mbox{\Hypertarget{class_graph_a15ab4d5de3371c3ac79dced11473df38}\label{class_graph_a15ab4d5de3371c3ac79dced11473df38}} 
+vector$<$ E\+D\+GE $>$ $\ast$ {\bfseries adj\+\_\+list}
+\item 
+\mbox{\Hypertarget{class_graph_a3df791460559b6036726a1b156208899}\label{class_graph_a3df791460559b6036726a1b156208899}} 
+vector$<$ E\+D\+GE $>$ $\ast$ {\bfseries residual\+\_\+graph}
+\item 
+\mbox{\Hypertarget{class_graph_aedbcb577369f7310750cea89a5619405}\label{class_graph_aedbcb577369f7310750cea89a5619405}} 
+unordered\+\_\+map$<$ long long, long long $>$ {\bfseries lookup}
+\item 
+\mbox{\Hypertarget{class_graph_a80cb13fe9aad40145a9e0418a2feb4f5}\label{class_graph_a80cb13fe9aad40145a9e0418a2feb4f5}} 
+unordered\+\_\+map$<$ long long, long long $>$ {\bfseries reverse\+\_\+lookup}
+\item 
+\mbox{\Hypertarget{class_graph_ab4cd0c89bd06d6f64884980b241c100b}\label{class_graph_ab4cd0c89bd06d6f64884980b241c100b}} 
+vector$<$ long long $>$ {\bfseries indegree}
+\item 
+\mbox{\Hypertarget{class_graph_a5f8b618f6d47d9c4f512add7c9e53d1b}\label{class_graph_a5f8b618f6d47d9c4f512add7c9e53d1b}} 
+vector$<$ long long $>$ {\bfseries outdegree}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Subhash/\+Desktop/\+Ford\+Fulkerson/Graph.\+h\item 
+C\+:/\+Users/\+Subhash/\+Desktop/\+Ford\+Fulkerson/Graph.\+cpp\end{DoxyCompactItemize}

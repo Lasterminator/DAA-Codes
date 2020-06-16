@@ -1,3 +1,0 @@
-Max-flow value : 20
-
-Time taken by program is : 0.000998 sec

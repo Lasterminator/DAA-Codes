@@ -1,8 +1,8 @@
 #include "Graph.h"
 int main(int argc, char **argv) {
-    string algo_number, string file_name;
-    file_name = (argv[1]);
-    ifstream cin(file_name);
+    // string algo_number, string file_name;
+    // file_name = (argv[1]);
+    // ifstream cin(file_name);
     // V = number of vertices, E = number of Edges
     int V, E;
     cin >> V >> E;

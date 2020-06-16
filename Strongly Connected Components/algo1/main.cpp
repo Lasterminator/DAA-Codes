@@ -1,9 +1,9 @@
 #include "Graph.h"
 int main(int argc, char **argv) {
-    string file_name;
-    file_name = (argv[1]);
+    // string file_name;
+    // file_name = (argv[1]);
     //Input file name
-    ifstream cin(file_name);
+    // ifstream cin(file_name);
     int V, E; // V=vertice count, //E = edge count
     cin >> V >> E;
     Graph graph(V, E);
